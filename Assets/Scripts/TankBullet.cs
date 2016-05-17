@@ -3,30 +3,29 @@ using System.Collections;
 
 public class TankBullet : MonoBehaviour
 {
-	public GameObject Bullet;
-	public int ShootDelay;
-	public int power = 100;
-	void Start () 
+	public float lifeTime;
+
+	private float timer;
+
+	void Start()
 	{
-	
+		timer = lifeTime;
 	}
 
 	void Update () 
 	{
+		if(timer <= 0)
+			Destroy(gameObject);
 
-		if (Input.GetKeyDown (KeyCode.K)) 
-		{
-			Shoot();
-		}
-
-
-	
+		timer -= Time.deltaTime;
 	}
 
-
-	void Shoot()
+	void OnCollisionEnter(Collision coll)
 	{
-		GameObject b = Instantiate (Bullet, transform.position, transform.rotation) as GameObject;
-		b.GetComponent<Rigidbody> ().AddForce (b.transform.forward * power);
+		if(coll.gameObject.tag == "Tower")
+		{
+			Destroy(coll.gameObject);
+			Destroy(gameObject);
+		}
 	}
 }
