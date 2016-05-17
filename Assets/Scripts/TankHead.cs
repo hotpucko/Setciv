@@ -66,7 +66,6 @@ public class TankHead : MonoBehaviour
 	void Shoot()
 	{
 		GameObject bullet = Instantiate(bulletPrefab, transform.position, transform.rotation) as GameObject;
-		bullet.GetComponent<Rigidbody>().AddForce(bullet.transform.forward * firePower);
 		bullet.GetComponent<Rigidbody>().velocity = transform.forward * firePower;
 	}
 }

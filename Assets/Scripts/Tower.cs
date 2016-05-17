@@ -8,7 +8,6 @@ public class Tower : MonoBehaviour {
 	public float reloadTime = 1f;
 	public float rotationTime;
     public int damage;
-    public int cost;
 
 	Transform Target;
 	float nextFireTime;
