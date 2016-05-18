@@ -12,84 +12,46 @@ public class Tower : MonoBehaviour {
 	Transform Target;
 	float nextFireTime;
 	Bullet projectile;
-
-	//List<Transform> targets = new List<Transform>();
-
     void Start ()
     {
         
     }
 
-	// Update is called once per frame
-	void Update () {
-
-        //if (targets.Count > 0)
-        //{
-        //    for (int i = 0; i < targets.Count; i++)
-        //    {
-        //        if (targets[i] == null)
-        //        {
-        //            targets.RemoveAt(i);
-        //        }
-        //    }
-
-        //    Target = targets[0];
-        //}
-        //else
-        //    Target = null; 
-
-
-		if (Target) {
+	void Update () 
+	{
+		if (Target) 
+		{
 			Quaternion _lookRotation = Quaternion.LookRotation ((transform.position - Target.transform.position).normalized);
-			GetComponentInChildren<TurretTop>().transform.rotation = Quaternion.Slerp(GetComponentInChildren<TurretTop>().transform.rotation, _lookRotation, Time.deltaTime * rotationTime);
+			if (GetComponentInChildren<TurretTop> () != null)
+				GetComponentInChildren<TurretTop> ().transform.rotation = Quaternion.Slerp (GetComponentInChildren<TurretTop> ().transform.rotation, _lookRotation, Time.deltaTime * rotationTime);
+			else
+				transform.rotation = Quaternion.Slerp (transform.rotation, _lookRotation, Time.deltaTime * rotationTime);
 
-
-			//Debug.Log("Target!");
-
-			if(Time.time >= nextFireTime){
+			if(Time.time >= nextFireTime)
+			{
 				FireBullet();
-
 			}
-
-
 		}
-
-
 	}
 
     void OnTriggerExit(Collider other)
     {
-        //for (int i = 0; i < targets.Count; i++)
-        //{
-        //    if(other.transform == targets[i])
-        //    {
-        //        targets.RemoveAt(i);
-        //    }
-        //}
+		
     }
 
 	void OnTriggerEnter(Collider other)
 	{
-		if (other.gameObject.tag == "Monster"){
-
-			//Debug.Log("Monster tag detected");
-
-			//nextFireTime = (float)(Time.time+(reloadTime*0.5));
-            //targets.Add(other.transform);
+		if (other.gameObject.tag == "Monster")
+		{
 			Target = FindClosestEnemy().gameObject.transform;
-
 		}
 	}
 
 	void FireBullet() {
-
-		//Debug.Log ("Pew");
-
 		nextFireTime = Time.time + reloadTime;
 		projectile = Instantiate (BulletPrefab, transform.position, Quaternion.identity) as Bullet;
         projectile.SetDamage(damage);
 		projectile.GetComponent<Bullet>().target = Target;	
-
 	}
 
 

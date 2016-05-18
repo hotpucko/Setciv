@@ -7,36 +7,36 @@ public class BuildplaceScript : MonoBehaviour {
 	public GameObject cam;
 	public List<GameObject> towerPrefabList = new List<GameObject>();
 
-	HUDscript.Towers selectedTower; 
-	GameObject towerPrefab;
-	HUDscript hudscript;
-    bool occupied;
+	private HUDscript.Towers selectedTower; 
+	private GameObject towerPrefab;
+	private HUDscript hudscript;
+    private bool occupied;
 
 	void Start()
 	{
-	
 		hudscript = cam.GetComponent<HUDscript>();
         occupied = false;
+	}
 
+	void Update()
+	{
+		if(occupied)
+			gameObject.SetActive(false);
 	}
 
 
 
-	void OnMouseUpAsButton() 
+	void OnMouseUpAsButton()
 	{
 		selectedTower = hudscript.selectedTower;
-
-		//Debug.Log ("selectedTower = " + selectedTower.ToString());
 
 		switch (selectedTower) {
 		
 		case HUDscript.Towers.Tower1:
-			//set towerprefab to Tower1
 			towerPrefab = towerPrefabList[0];
 			break;
 
 		case HUDscript.Towers.Tower2:
-			//set towerprefab to tower2
 			towerPrefab = towerPrefabList[1];
 			break;
         case HUDscript.Towers.Tower3:
