@@ -75,6 +75,13 @@ public class HexGrid : MonoBehaviour {
 		HexCell cell = Instantiate<HexCell>(GetRandomCellPrefab());
 		cells.Add (cell);
 
+		int rotate = UnityEngine.Random.Range (0, 2);
+
+		if (rotate == 1)
+			cell.transform.Rotate (new Vector3 (0, 180, 0));
+
+		//Vector3 newEuler |= rotate ? new Vector3(0, 180, 0) : new Vector3(0, 0, 0);
+
         cell.transform.SetParent(transform, false);
         cell.transform.localPosition = position;
 		cell.coordinates = HexCoordinates.FromOffsetCoordinates(x, z);
