@@ -3,6 +3,7 @@ using System.Collections;
 
 public class CameraControls : MonoBehaviour {
 	public float Speed;
+    public Transform cam;
 
 	void Awake()
 	{
@@ -11,12 +12,16 @@ public class CameraControls : MonoBehaviour {
 
 
 	void Update () {
-		transform.position += new Vector3 (Input.GetAxis ("Horizontal"), Input.GetAxis("Mouse ScrollWheel") * -10 * Speed, Input.GetAxis ("Vertical") * Speed);
-        transform.position = new Vector3(Mathf.Clamp(transform.position.x, 0, 100), Mathf.Clamp(transform.position.y, 5, 50), Mathf.Clamp(transform.position.z, -30, 70));
-		/*if (Input.GetKeyDown (KeyCode.E)) {
+		transform.Translate( new Vector3 (Input.GetAxis ("Horizontal") * Speed, 0, Input.GetAxis ("Vertical") * Speed));
+        transform.Rotate(new Vector3(0, Input.GetAxis("Rotate") * 3f, 0));
+        transform.position = new Vector3(Mathf.Clamp(transform.position.x, -20, 120), Mathf.Clamp(transform.position.y, 1, 2), Mathf.Clamp(transform.position.z, -20, 120));
+
+        cam.Translate(new Vector3(0, Input.GetAxis("Mouse ScrollWheel") * 25f, 0));
+        cam.position = new Vector3(cam.position.x, Mathf.Clamp(cam.position.y, 20, 50),cam.position.z);
+        /*if (Input.GetKeyDown (KeyCode.E)) {
 			RaycastHit hit;
 			if(Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out hit))
 			transform.rotatear
 		}*/
-	}
+    }
 }
