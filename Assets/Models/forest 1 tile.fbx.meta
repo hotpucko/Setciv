@@ -1,15 +1,25 @@
 fileFormatVersion: 2
-guid: cf26c5952af2385479f372edd1a2a7b9
-timeCreated: 1469274902
+guid: d9214df89b2afa84a877833e0dfaf95b
+timeCreated: 1469299950
 licenseType: Free
 ModelImporter:
   serializedVersion: 19
   fileIDToRecycleName:
-    100000: //RootNode
-    400000: //RootNode
-    2300000: //RootNode
-    3300000: //RootNode
-    4300000: pCylinder1
+    100000: Basic_hexagon:pCylinder1
+    100002: Basic_hexagon:pCylinder2
+    100004: Basic_hexagon:transform1
+    100006: Basic_hexagon:transform2
+    100008: //RootNode
+    100010: pCylinder21
+    400000: Basic_hexagon:pCylinder1
+    400002: Basic_hexagon:pCylinder2
+    400004: Basic_hexagon:transform1
+    400006: Basic_hexagon:transform2
+    400008: //RootNode
+    400010: pCylinder21
+    2300000: Basic_hexagon:pCylinder2
+    3300000: Basic_hexagon:pCylinder2
+    4300000: Basic_hexagon:pCylinder2
     9500000: //RootNode
   materials:
     importMaterials: 1
@@ -35,7 +45,7 @@ ModelImporter:
     isReadable: 1
   meshes:
     lODScreenPercentages: []
-    globalScale: 100
+    globalScale: 1
     meshCompression: 0
     addColliders: 0
     importBlendShapes: 1

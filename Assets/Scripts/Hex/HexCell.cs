@@ -6,17 +6,12 @@ public class HexCell : MonoBehaviour {
 
     public HexCoordinates coordinates;
 
-    public Color color;
+	public Color defaultColor = Color.white, highlightedColor = Color.magenta;
+
+	public HexMetrics.TileType tileType;
 
     void Awake()
     {
-        //Color[] colors = GetComponent<MeshFilter>().mesh.colors;
-        //List<Color> cols = new List<Color>();
-        //for (int i = 0; i < colors.Length; i++)
-        //{
-        //    cols.Add(Color.magenta);
-        //}
-        //colors = cols.ToArray();
+		GetComponent<Renderer> ().material.color = defaultColor;
     }
-
 }
