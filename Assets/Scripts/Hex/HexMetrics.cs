@@ -6,7 +6,7 @@ public static class HexMetrics {
 
     public const float innerRadius = outerRadius * 0.866025404f;
 
-	public enum TileType {Claypit, Forest, Mountain, Settlement, Null};
+	public enum TileType { Water, Claypit, Forest, Mountain, Settlement, Desert, Pasture };
 
 	public static TileType GetRandomTileType (){
 		return GetRandomEnum<TileType> ();
@@ -15,7 +15,7 @@ public static class HexMetrics {
 	public static T GetRandomEnum<T>()
 	{
 		System.Array A = System.Enum.GetValues(typeof(T));
-		T V = (T)A.GetValue(UnityEngine.Random.Range(0, A.Length));
+		T V = (T)A.GetValue(UnityEngine.Random.Range(1, A.Length));
 		return V;
 	}
 }
