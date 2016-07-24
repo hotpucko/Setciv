@@ -75,6 +75,8 @@ public class HexGrid : MonoBehaviour {
 		HexCell cell = Instantiate<HexCell>(GetRandomCellPrefab());
 		cells.Add (cell);
 
+		cell.transform.rotation = GetRandomRotation (cell.transform.rotation);
+
 		int rotate = UnityEngine.Random.Range (0, 2);
 
 		if (rotate == 1)
@@ -97,6 +99,14 @@ public class HexGrid : MonoBehaviour {
     {
         HandleInput();
     }
+
+	Quaternion GetRandomRotation(Quaternion rotation){
+		Vector3 euler = rotation.eulerAngles;
+		int amountToRotate = UnityEngine.Random.Range (0, 6);
+		euler = new Vector3 (euler.x, euler.y + amountToRotate * 60, euler.z);
+		return Quaternion.Euler (euler);
+	}
+
 
 	HexCell GetRandomCellPrefab(){
 		return cellPrefabs[UnityEngine.Random.Range (0, cellPrefabs.Length)];
